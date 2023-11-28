@@ -5,15 +5,17 @@ import TaskList from "./TaskList";
 
 import { CATEGORIES, TASKS } from "../data";
 import { render } from "@testing-library/react";
-console.log("Here's the data you're working with");
-console.log({ CATEGORIES, TASKS });
-console.log(TASKS);
-console.log(CATEGORIES);
+// console.log("Here's the data you're working with");
+// console.log({ CATEGORIES, TASKS });
+// console.log(TASKS);
+// console.log(CATEGORIES);
 
 function App() {
   const [tasks, setTasks] = useState(TASKS);
   const [categories, setCategories] = useState(CATEGORIES);
-  console.log(categories);
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+  // console.log(categories);
   
   function onHandleDelete(deletedTask) {
     const newTasks = tasks.filter((task) => task.text !== deletedTask);
@@ -24,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter categories={categories} />
+      <CategoryFilter categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} tasks={tasks} onCategoryFilter={setTasks}/>
       <NewTaskForm />
       <TaskList tasks={tasks} onHandleDelete={onHandleDelete}/>
     </div>
