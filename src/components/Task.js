@@ -1,9 +1,10 @@
 import React from "react";
 
-function Task({text, category}) {
-
-  function handleDelete(e) {
-    console.log(e.target);
+function Task({text, category, onHandleDelete}) {
+  console.log(text);
+  
+  function handleDelete() {
+    onHandleDelete(text);
   }
 
   return (
@@ -16,3 +17,20 @@ function Task({text, category}) {
 }
 
 export default Task;
+
+// import React from "react";
+
+// function Task({text, category, onHandleDelete}) {
+
+//   console.log(onHandleDelete)
+  
+//   return (
+//     <div className="task">
+//       <div className="label" >{category}</div>
+//       <div className="text" >{text}</div>
+//       <button className="delete" onClick={onHandleDelete} >X</button>
+//     </div>
+//   );
+// }
+
+// export default Task;
